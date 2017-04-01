@@ -22,6 +22,9 @@
         <activity android:name=".Activities.CandidateAuth" />
         <activity android:name=".Activities.CandidateKyc" />
         <activity android:name=".Activities.CandidateList"></activity>
+        <activity
+            android:name=".Qr.BarcodeCaptureActivity"
+            android:parentActivityName=".Activities.CandidateLogin" />
     </application>
 
 </manifest>

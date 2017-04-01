@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true">
-    <com.example.aditya.nemisisaadharauth.Qr.CameraSourcePreview
+    <com.nemesis.nemesis.Qr.CameraSourcePreview
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-    </com.example.aditya.nemisisaadharauth.Qr.CameraSourcePreview>
+    </com.nemesis.nemesis.Qr.CameraSourcePreview>
 </LinearLayout>

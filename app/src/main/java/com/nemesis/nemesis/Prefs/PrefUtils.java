@@ -19,9 +19,6 @@ public class PrefUtils {
     private static final String INVIGILATOR_LOGIN_STATUS="INVIGILATOR_LOGIN_STATUS";
     private static final String INVIGILATOR_PROFILE="INVIGILATOR_PROFILE";
 
-    public static void setInvigilator(Context context,InvigilatorDetails invigDetails){
-
-    }
 
     public static String getInvigilatorId(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context).getString(INVIGILATOR_ID,"");
@@ -50,6 +47,17 @@ public class PrefUtils {
         edit.putString(INVIGILATOR_ID,"");
         edit.putString(INVIGILATOR_NAME,"");
         edit.putString(INVIGILATOR_PROFILE,"");
+        edit.apply();
+    }
+
+    public static void login(Context context,InvigilatorDetails invigilatorDetails){
+        SharedPreferences.Editor edit=PreferenceManager.getDefaultSharedPreferences(context).edit();
+        edit.putString(INVIGILATOR_KEY,invigilatorDetails.getIkey());
+        edit.putString(INVIGILATOR_ID,invigilatorDetails.getId());
+        edit.putString(INVIGILATOR_NAME,invigilatorDetails.getName());
+        edit.putString(INVIGILATOR_CENTER,invigilatorDetails.getCenter());
+        edit.putString(INVIGILATOR_PROFILE,invigilatorDetails.getProfile());
+        edit.putBoolean(INVIGILATOR_LOGIN_STATUS,true);
         edit.apply();
     }
 

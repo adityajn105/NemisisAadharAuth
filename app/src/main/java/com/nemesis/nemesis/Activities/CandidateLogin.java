@@ -54,9 +54,9 @@ public class CandidateLogin extends AppCompatActivity {
     public void onBackPressed() {}
 
     @OnClick(R.id.qr)
-    public void scanQr(){
-        startActivityForResult(new Intent(getApplicationContext(), BarcodeCaptureActivity.class),
-                ActivityIdentifiers.BARCODE_READER_CODE);
+    public void onClickQr(){
+        Intent intent=new Intent(getApplicationContext(), BarcodeCaptureActivity.class);
+        startActivityForResult(intent,ActivityIdentifiers.BARCODE_READER_CODE);
     }
 
     @Override
@@ -68,14 +68,14 @@ public class CandidateLogin extends AppCompatActivity {
                     enroll.setText(barcode.displayValue);
                 } else {
                     new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Enter Enrollment Number Manually")
-                            .setContentText("Something went wrong!")
+                            .setContentText("Enter Enrollment Number Manually")
+                            .setTitleText("Something went wrong!")
                             .show();
                 }
             } else {
                 new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Enter Enrollment Number Manually")
-                        .setContentText("Something went wrong!")
+                        .setContentText("Enter Enrollment Number Manually")
+                        .setTitleText("Something went wrong!")
                         .show();
             }
         }
