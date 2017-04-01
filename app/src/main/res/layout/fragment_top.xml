@@ -10,12 +10,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="2dp"
-        android:gravity="center_vertical">
+        android:background="@color/colorPrimaryDark">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:src="@drawable/back_32"
+            android:src="@drawable/back_24"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
             android:id="@+id/backbutton"
             android:visibility="gone"/>
         <de.hdodenhof.circleimageview.CircleImageView
@@ -27,8 +29,9 @@
             android:id="@+id/invigilatorprofile" />
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
+            android:gravity="center_vertical"
             android:layout_marginLeft="10dp">
             <TextView
                 android:layout_width="wrap_content"

@@ -8,11 +8,12 @@ import android.preference.PreferenceManager;
  * Created by aditya on 4/1/17.
  */
 
-public class ActivityIdentifires {
+public class ActivityIdentifiers {
 
     private static final String CURRENT_SCREEN="CURRENT_SCREEN";
     public static final int INVIGILATOR_AUTH=446;
     public static final int CANDIDATE_AUTH=447;
+    public static final int BARCODE_READER_CODE=12;
 
     public static final int INVIGILATOR_LOGIN_SCREEN=1;
     public static final int CANDIDATE_LOGIN_SCREEN=2;
