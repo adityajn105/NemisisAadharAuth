@@ -12,4 +12,6 @@ public class CandidateAuth extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_candidate_auth);
     }
+
+
 }

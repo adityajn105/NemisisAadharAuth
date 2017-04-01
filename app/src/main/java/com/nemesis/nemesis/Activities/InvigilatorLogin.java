@@ -1,5 +1,6 @@
 package com.nemesis.nemesis.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,6 +13,6 @@ public class InvigilatorLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invigilator_login);
 
-
+        startActivity(new Intent(getApplicationContext(),CandidateLogin.class));
     }
 }
