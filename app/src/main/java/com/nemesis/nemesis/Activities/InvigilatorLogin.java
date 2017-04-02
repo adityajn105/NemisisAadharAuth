@@ -55,8 +55,6 @@ public class InvigilatorLogin extends AppCompatActivity {
         ButterKnife.bind(this);
         ActivityIdentifiers.setCurrentScreen(getApplicationContext(),ActivityIdentifiers.INVIGILATOR_LOGIN_SCREEN);
         arc=new ApiResponseCodes();
-        key.setText("123456");
-        id.setText("34500");
     }
 
     @OnClick(R.id.login)

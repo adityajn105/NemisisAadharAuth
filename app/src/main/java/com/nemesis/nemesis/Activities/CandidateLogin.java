@@ -147,4 +147,8 @@ public class CandidateLogin extends AppCompatActivity {
 
     }
 
+    public void listClicked(){
+        startActivity(new Intent(getApplicationContext(),CandidateList.class));
+    }
+
 }

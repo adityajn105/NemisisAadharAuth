@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.nemesis.nemesis.Activities.CandidateKyc;
 import com.nemesis.nemesis.Activities.CandidateList;
+import com.nemesis.nemesis.Activities.CandidateLogin;
 import com.nemesis.nemesis.ActivityIdentifiers;
 import com.nemesis.nemesis.Prefs.PrefUtils;
 import com.nemesis.nemesis.R;
@@ -75,6 +76,8 @@ public class TopFragment extends Fragment {
                 break;
         }
     }
+
+
 
 
 }

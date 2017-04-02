@@ -120,4 +120,8 @@ public class CandidateKyc extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {}
+
+    public void listClicked(){
+        startActivity(new Intent(getApplicationContext(),CandidateList.class));
+    }
 }

@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.nemesis.nemesis.Activities.CandidateAuth;
+import com.nemesis.nemesis.Activities.CandidateKyc;
 import com.nemesis.nemesis.Activities.CandidateList;
 import com.nemesis.nemesis.Activities.CandidateLogin;
 import com.nemesis.nemesis.ActivityIdentifiers;
@@ -50,8 +52,31 @@ public class BottomFragment extends Fragment {
             case ActivityIdentifiers.CANDIDATE_LIST_SCREEN:
                 ((CandidateList)getContext()).goBack();
                 break;
+            case ActivityIdentifiers.CANDIDATE_KYC_SCREEN:
+                ((CandidateKyc)getContext()).goBack();
+                break;
+        }
+    }
 
+    @OnClick(R.id.list)
+    public void listClicked(){
+        switch (act){
+            case ActivityIdentifiers.CANDIDATE_LIST_SCREEN:
+                break;
+            case ActivityIdentifiers.CANDIDATE_LOGIN_SCREEN:
+                ((CandidateLogin)getContext()).listClicked();
+                break;
+            case ActivityIdentifiers.CANDIDATE_KYC_SCREEN:
+                ((CandidateKyc)getContext()).listClicked();
+        }
+    }
 
+    @OnClick(R.id.more)
+    public void moreClicked(){
+        switch(act){
+            case ActivityIdentifiers.CANDIDATE_LOGIN_SCREEN:
+            //    ((CandidateLogin)getContext()).
+                break;
         }
     }
 
