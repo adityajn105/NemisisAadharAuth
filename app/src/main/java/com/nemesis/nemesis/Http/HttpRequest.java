@@ -15,28 +15,29 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 /**
  * Created by aditya on 4/1/17.
  */
 
 public class HttpRequest {
-    public static String API_URL="http://35.154.204.72/";
+    public static String API_URL="http://35.154.117.178/http/";
 
     public static Retrofit retrofit= new Retrofit.Builder()
             .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    public interface RegistrationIterface{
+    public interface ExamApiInterface{
         @POST("slogin.php")
-        Call<CandidateInfo> getCandidateInfo(@Body CandidateKyc request);
+        Call<CandidateInfo> getCandidateInfo(@Body DefaultRequest request);
 
         @Multipart
         @POST("ilogin.php")
         Call<InvigilatorDetails> getInvigilatorDetails(
-                RequestBody id,
-                RequestBody ikey
+               @Part("id") RequestBody id,
+                @Part("ikey") RequestBody ikey
         );
 
         @POST("sdetails.php")
@@ -57,13 +58,13 @@ public class HttpRequest {
         @Multipart
         @POST("mycandidates.php")
         Call<MyCandidates> getAllCandidates(
-            RequestBody id,
-            RequestBody key
+            @Part("id") RequestBody id,
+             @Part("ikey") RequestBody key
         );
 
         @POST("auth.php")
         Call<DefaultResponse> authSuccess(
-                DefaultRequest request
+             @Body   DefaultRequest request
         );
     }
 }

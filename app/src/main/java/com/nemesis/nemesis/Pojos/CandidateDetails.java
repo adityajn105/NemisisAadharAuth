@@ -15,23 +15,23 @@ public class CandidateDetails {
 
     @SerializedName("fname")
     @Expose
-    private int fname;
+    private String fname;
 
     @SerializedName("lname")
     @Expose
-    private int lname;
+    private String lname;
 
     @SerializedName("email")
     @Expose
-    private int email;
+    private String email;
 
     @SerializedName("dob")
     @Expose
-    private int dob;
+    private String dob;
 
     @SerializedName("rollno")
     @Expose
-    private int rollno;
+    private String rollno;
 
     @SerializedName("profile")
     @Expose
@@ -49,23 +49,23 @@ public class CandidateDetails {
         return statuscode;
     }
 
-    public int getFname() {
+    public String getFname() {
         return fname;
     }
 
-    public int getLname() {
+    public String getLname() {
         return lname;
     }
 
-    public int getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public int getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public int getRollno() {
+    public String getRollno() {
         return rollno;
     }
 

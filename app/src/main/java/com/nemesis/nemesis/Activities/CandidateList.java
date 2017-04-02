@@ -1,32 +1,98 @@
 package com.nemesis.nemesis.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.nemesis.nemesis.ActivityIdentifiers;
+import com.nemesis.nemesis.ApiResponseCodes;
+import com.nemesis.nemesis.Http.HttpRequest;
+import com.nemesis.nemesis.Pojos.CandidateDetails;
+import com.nemesis.nemesis.Pojos.DefaultRequest;
+import com.nemesis.nemesis.Pojos.MyCandidates;
+import com.nemesis.nemesis.Prefs.PrefUtils;
 import com.nemesis.nemesis.R;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 public class CandidateList extends AppCompatActivity {
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
+    ApiResponseCodes arc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_candidate_list);
         ButterKnife.bind(this);
         ActivityIdentifiers.setCurrentScreen(getApplicationContext(),ActivityIdentifiers.CANDIDATE_LIST_SCREEN);
+        arc=new ApiResponseCodes();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        getData();
     }
+
+    public void getData(){
+        rx.Observable.create(new rx.Observable.OnSubscribe<MyCandidates>() {
+            @Override
+            public void call(final Subscriber<? super MyCandidates> subscriber) {
+                HttpRequest.ExamApiInterface examInterface = HttpRequest.retrofit.create(HttpRequest.ExamApiInterface.class);
+                Call<MyCandidates> responseCall = examInterface.getAllCandidates(
+                        RequestBody.create(MediaType.parse("text/string"),PrefUtils.getInvigilatorId(getApplicationContext())),
+                        RequestBody.create(MediaType.parse("text/string"),PrefUtils.getInvigilatorKey(getApplicationContext()))
+                );
+                responseCall.enqueue(new Callback<MyCandidates>() {
+                    @Override
+                    public void onResponse(Call<MyCandidates> call, Response<MyCandidates> response) {
+                        if(response.body().getStatuscode()==200){
+                            subscriber.onNext(response.body());
+                        }
+                        else{
+                            new SweetAlertDialog(CandidateList.this, SweetAlertDialog.ERROR_TYPE)
+                                    .setTitleText("Error : "+response.body().getStatuscode())
+                                    .setContentText(arc.getResponsePhrase(response.body().getStatuscode()))
+                                    .show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<MyCandidates> call, Throwable t) {
+                        new SweetAlertDialog(CandidateList.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Something Went Wrong")
+                                .setContentText("Check Your Internet Connection")
+                                .show();
+                    }
+                });
+            }
+        })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<MyCandidates>() {
+                    @Override
+                    public void call(MyCandidates myCandidates) {
+
+                    }
+                });
+    }
+
 
     @Override
     public void onBackPressed() {}
 
+    public void goBack(){
+        startActivity(new Intent(getApplicationContext(),CandidateLogin.class));
+    }
 
 }

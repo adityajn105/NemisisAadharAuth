@@ -57,6 +57,7 @@
                         android:hint="Enrollment Number"
                         android:layout_gravity="center_horizontal"
                         android:gravity="center"
+                        android:inputType="number"
                         android:id="@+id/rollno"/>
                 </android.support.design.widget.TextInputLayout>
                 <ImageButton

@@ -11,11 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nemesis.nemesis.Activities.CandidateKyc;
 import com.nemesis.nemesis.Activities.CandidateList;
-import com.nemesis.nemesis.Activities.CandidateLogin;
 import com.nemesis.nemesis.ActivityIdentifiers;
+import com.nemesis.nemesis.Prefs.PrefUtils;
 import com.nemesis.nemesis.R;
 import com.squareup.picasso.Picasso;
 
@@ -28,6 +29,8 @@ public class TopFragment extends Fragment {
 
     @BindView(R.id.invigilatorprofile) CircleImageView invigilatorProfile;
     @BindView(R.id.backbutton) ImageView back;
+    @BindView(R.id.invigilatorname) TextView name;
+    @BindView(R.id.center) TextView center;
 
     private int act;
     @Override
@@ -36,8 +39,6 @@ public class TopFragment extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_top, container, false);
         ButterKnife.bind(this,v);
-        Picasso.with(getContext()).load("http://35.154.117.178/uploads/883758165948.jpe").noFade().into(invigilatorProfile);
-
         act= ActivityIdentifiers.getCurrentScreen(getContext());
         switch (act){
             case ActivityIdentifiers.CANDIDATE_AUTH_SCREEN:
@@ -56,6 +57,9 @@ public class TopFragment extends Fragment {
                 back.setVisibility(View.GONE);
                 break;
         }
+        Picasso.with(getContext()).load("http://35.154.117.178/"+ PrefUtils.getInvigilatorProfile(getContext())).into(invigilatorProfile);
+        name.setText(PrefUtils.getInvigilatorName(getContext()));
+        center.setText("Center : "+PrefUtils.getInvigilatorCenter(getContext()));
 
         return v;
     }
@@ -64,7 +68,7 @@ public class TopFragment extends Fragment {
     public void onBackClicked(){
         switch (act){
             case ActivityIdentifiers.CANDIDATE_LIST_SCREEN:
-                //((CandidateList)getContext()).goBack();
+                ((CandidateList)getContext()).goBack();
                 break;
             case ActivityIdentifiers.CANDIDATE_KYC_SCREEN:
                 ((CandidateKyc)getContext()).goBack();

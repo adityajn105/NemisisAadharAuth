@@ -21,10 +21,12 @@
         <activity android:name=".Activities.CandidateLogin" />
         <activity android:name=".Activities.CandidateAuth" />
         <activity android:name=".Activities.CandidateKyc" />
-        <activity android:name=".Activities.CandidateList"></activity>
+        <activity android:name=".Activities.CandidateList" />
         <activity
             android:name=".Qr.BarcodeCaptureActivity"
             android:parentActivityName=".Activities.CandidateLogin" />
+        <activity android:name=".Activities.ProcessingActivity" />
+        <activity android:name=".Activities.ScanningScreen"></activity>
     </application>
 
 </manifest>

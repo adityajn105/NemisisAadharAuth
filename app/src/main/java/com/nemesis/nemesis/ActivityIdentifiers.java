@@ -14,11 +14,19 @@ public class ActivityIdentifiers {
     public static final int INVIGILATOR_AUTH=446;
     public static final int CANDIDATE_AUTH=447;
     public static final int BARCODE_READER_CODE=1;
+    public static final String UID="AADHAR_NUMBER";
+    public static final int FINGERPRINT_ERROR=45;
+    public static final String AUTH_RESULT="AUTH_RESULT";
+
 
     public static final int INVIGILATOR_LOGIN_SCREEN=1;
     public static final int CANDIDATE_LOGIN_SCREEN=2;
     public static final int CANDIDATE_AUTH_SCREEN=3;
     public static final int CANDIDATE_KYC_SCREEN=4;
+    public static final int BIO_SUCCESS=123;
+    public static final int BIO_FAILURE=124;
+    public static final int FINGERPRINT_SCAN_CODE=23;
+
     public static final int CANDIDATE_LIST_SCREEN=5;
 
     public static final void setCurrentScreen(Context context,int screen){

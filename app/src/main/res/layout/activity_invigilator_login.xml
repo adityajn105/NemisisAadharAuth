@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/mainLayout"
     tools:context="com.nemesis.nemesis.Activities.InvigilatorLogin">
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,6 +45,7 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="Invigilator Id"
                     android:gravity="center_horizontal"
                     android:id="@+id/id"/>
