@@ -36,8 +36,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -164,7 +162,7 @@ public class CandidateLogin extends AppCompatActivity {
 
     public void instruct(){
         AlertDialog.Builder terms = new AlertDialog.Builder(this);
-        terms.setTitle("Terms and Condition");
+        terms.setTitle("Instructions for Invigilators");
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setPadding(10, 10, 10, 10);

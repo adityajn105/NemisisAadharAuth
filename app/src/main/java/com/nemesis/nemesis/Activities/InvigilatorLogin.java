@@ -127,8 +127,6 @@ public class InvigilatorLogin extends AppCompatActivity {
         Intent intent=new Intent(getApplicationContext(),ScanningScreen.class);
         intent.putExtra(UID,aadhar);
         startActivityForResult(intent, FINGERPRINT_SCAN_CODE);
-       /* PrefUtils.newLogIn(getApplicationContext(), invigilator);
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));*/
     }
 
     @Override

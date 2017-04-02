@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.nemesis.nemesis.ActivityIdentifiers;
 import com.nemesis.nemesis.Adapters.CandidateListAdapter;
@@ -16,6 +17,9 @@ import com.nemesis.nemesis.Http.HttpRequest;
 import com.nemesis.nemesis.Pojos.MyCandidates;
 import com.nemesis.nemesis.Prefs.PrefUtils;
 import com.nemesis.nemesis.R;
+
+import java.util.HashMap;
+import java.util.StringTokenizer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +36,8 @@ import rx.functions.Action1;
 public class CandidateList extends AppCompatActivity {
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
-
+    @BindView(R.id.summary)
+    TextView summary;
     ApiResponseCodes arc;
 
     @Override
@@ -90,6 +95,28 @@ public class CandidateList extends AppCompatActivity {
                     @Override
                     public void call(MyCandidates myCandidates) {
                         recyclerView.setAdapter(new CandidateListAdapter(getApplicationContext(),myCandidates.getList()));
+                        int total=myCandidates.getCount();
+                        int unknown=0;int success=0;int failure=0;
+                        for(HashMap<String,String> hash:myCandidates.getList()){
+                            switch(hash.get("status")){
+                                case "SUCCESS":
+                                    success++;
+                                    break;
+                                case "FAILURE":
+                                    failure++;
+                                    break;
+                                case "UNKNOWN":
+                                    unknown++;
+                                    break;
+                            }
+                        }
+                        summary.setText(
+                                "Total Students :"+total+"\n"+
+                                "UnAuthenticated :"+unknown+"\n"+
+                                "Successfully Authenticated : "+success+"\n"+
+                                "Impersonation Detected : "+failure+"\n"
+                        );
+
                     }
                 });
     }
