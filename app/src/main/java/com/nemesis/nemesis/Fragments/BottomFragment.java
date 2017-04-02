@@ -80,4 +80,27 @@ public class BottomFragment extends Fragment {
         }
     }
 
+    @OnClick(R.id.logout)
+    public void logoutClicked(){
+        switch (act){
+            case ActivityIdentifiers.CANDIDATE_LOGIN_SCREEN:
+                ((CandidateLogin)getContext()).logOut();
+                break;
+            case ActivityIdentifiers.CANDIDATE_LIST_SCREEN:
+                ((CandidateList)getContext()).logOut();
+                break;
+            case ActivityIdentifiers.CANDIDATE_KYC_SCREEN:
+                ((CandidateKyc)getContext()).logOut();
+                break;
+        }
+    }
+
+    @OnClick(R.id.instruct)
+    public void instructionClicked(){
+        switch(act){
+            case ActivityIdentifiers.CANDIDATE_LOGIN_SCREEN:
+                ((CandidateLogin)getContext()).instruct();
+        }
+    }
+
 }

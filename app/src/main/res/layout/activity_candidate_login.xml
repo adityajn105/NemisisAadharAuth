@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Enter Candidate Enrollment Number (or Scan Qr Code) and Click Authenticate"
+                android:text="Enter Candidate Enrollment Number"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textSize="15dp"/>
@@ -41,32 +41,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight=".1"/>
-            <LinearLayout
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputLayout
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+                <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp">
-                    <android.support.design.widget.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Enrollment Number"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:id="@+id/rollno"/>
-                </android.support.design.widget.TextInputLayout>
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/qr"
-                    android:src="@drawable/qr"
-                    android:background="@android:color/transparent"/>
-            </LinearLayout>
+                    android:hint="Enrollment Number"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:id="@+id/rollno"/>
+            </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="or Scan Qr Code"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="15dp"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/qr"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/qr72"
+                android:background="@android:color/transparent"/>
 
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"

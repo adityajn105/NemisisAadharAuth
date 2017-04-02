@@ -124,4 +124,10 @@ public class CandidateKyc extends AppCompatActivity {
     public void listClicked(){
         startActivity(new Intent(getApplicationContext(),CandidateList.class));
     }
+
+
+    public void logOut(){
+        PrefUtils.logout(getApplicationContext());
+        startActivity(new Intent(getApplicationContext(),InvigilatorLogin.class));
+    }
 }

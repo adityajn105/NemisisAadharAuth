@@ -101,4 +101,9 @@ public class CandidateList extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),CandidateLogin.class));
     }
 
+
+    public void logOut(){
+        PrefUtils.logout(getApplicationContext());
+        startActivity(new Intent(getApplicationContext(),InvigilatorLogin.class));
+    }
 }

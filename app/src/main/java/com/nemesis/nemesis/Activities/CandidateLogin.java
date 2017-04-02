@@ -1,5 +1,6 @@
 package com.nemesis.nemesis.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
@@ -7,11 +8,15 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -151,4 +156,36 @@ public class CandidateLogin extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),CandidateList.class));
     }
 
+
+    public void logOut(){
+        PrefUtils.logout(getApplicationContext());
+        startActivity(new Intent(getApplicationContext(),InvigilatorLogin.class));
+    }
+
+    public void instruct(){
+        AlertDialog.Builder terms = new AlertDialog.Builder(this);
+        terms.setTitle("Terms and Condition");
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.setPadding(10, 10, 10, 10);
+        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        TextView tv1 = new TextView(this);
+        tv1.setTextSize(17.0f);
+        tv1.setTextColor(Color.DKGRAY);
+        tv1.setText("\n\u25A0 This app is for use of Invigilator only" +
+                "\n\n\u25A0 Unauthorized usage may result in legal action" +
+                "\n\n\u25A0 Invigilator must report Impersonation case strictly after 3 failed attempts" +
+                "\n\n\u25A0 In case of damaged hall ticket, enter Enrollment number manually");
+        linearLayout.addView(tv1);
+        terms.setView(linearLayout);
+        terms.setPositiveButton("I Understand", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        terms.create().show();
+
+    }
 }
